@@ -1,241 +1,312 @@
-# Code Explainer and Fixer - Specification
+# 🐍 Code Explainer and Fixer
 
-## Overview
+An AI-powered tool that helps students and early-career developers understand, debug, and improve their Python code. Get instant feedback with high-level summaries, line-by-line explanations, bug detection, and improved code versions.
 
-This specification defines an AI-powered Code Explainer and Fixer designed for students and early-career developers. The system analyzes Python code and provides summaries, line-by-line explanations, bug detection, and improved code versions.
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.109.0-green.svg)
+![React](https://img.shields.io/badge/React-18+-61DAFB.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## Specification Documents
+## ✨ Features
 
-### 1. requirements.md
-**Purpose:** Defines WHAT the system must do
+- **📝 High-Level Summary** - Get a concise explanation of what your code does
+- **🔍 Line-by-Line Explanations** - Understand each significant line with beginner-friendly language
+- **🐛 Bug Detection** - Identify syntax errors, runtime errors, and logical bugs
+- **⚡ Performance Analysis** - Detect inefficiencies and bad coding practices
+- **✅ Code Improvements** - Receive an improved version with best practices applied
+- **🎓 Learning Aids** - Concept highlighting and educational tips (optional)
+- **📊 Visual Diff** - Side-by-side comparison of original vs improved code (optional)
+- **🎯 Demo Mode** - Fast, cached results perfect for presentations
 
-**Contents:**
-- 9 core requirements (Requirements 1-9)
-- 12 optional requirements (Requirements 10-21)
-- User stories and acceptance criteria for each requirement
-- Glossary of key terms
+## 🚀 Quick Start
 
-**Core Features:**
-- Code input and validation
-- High-level summary generation
-- Line-by-line explanations
-- Bug and issue detection
-- Code improvement generation
-- Error handling
-- Demo-ready features
+### Prerequisites
 
-**Optional Features:**
-- Explanation customization (depth, focus)
-- Visual diff comparison
-- Learning aids (concepts, tips, examples)
-- Export options (PDF, Markdown, HTML, shareable links)
-- Transparency indicators (confidence, limitations)
-- Error understanding and debug guidance
-- PEP 8 enforcement
-- Performance analysis
-- Beginner safeguards
-- Demo mode
-- Accessibility features
+- **Python 3.10+**
+- **Node.js 16+** (for frontend)
+- **OpenAI API Key** ([Get one here](https://platform.openai.com/api-keys))
 
-### 2. design.md
-**Purpose:** Defines HOW the system will be built
+### Backend Setup
 
-**Contents:**
-- System architecture (client-server model)
-- Component designs (13 components)
-- API specifications (5 endpoints)
-- Data models (15+ models)
-- Optional feature designs (12 detailed designs)
-- 22 correctness properties for testing
-- Testing strategy
-- Technology stack
-- Implementation priorities (4 phases)
-- Feature toggle system
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/code-explainer-fixer.git
+   cd code-explainer-fixer/backend
+   ```
 
-**Key Design Decisions:**
-- FastAPI backend with Python 3.10+
-- React + TypeScript frontend
-- OpenAI API for AI analysis
-- Modular optional features with feature flags
-- Property-based testing with Hypothesis
-- Phased implementation approach
+2. **Create and activate virtual environment**
+   ```bash
+   # Windows
+   python -m venv venv
+   venv\Scripts\activate
 
-### 3. tasks.md
-**Purpose:** Defines the implementation plan
+   # macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
-**Contents:**
-- 30 main tasks organized in 4 phases
-- ~120 subtasks with specific deliverables
-- 22 property test specifications
-- 4 quality checkpoints
-- Implementation notes and guidance
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-**Phases:**
-- **Phase 1: Core MVP** (12-16 hours) - Required
-- **Phase 2: Demo Enhancement** (6-8 hours) - High value
-- **Phase 3: Learning Features** (8-10 hours) - Medium value
-- **Phase 4: Advanced Features** (6-8 hours) - Lower priority
+4. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your OpenAI API key:
+   ```env
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
 
-**Total Estimated Time:** 32-42 hours for complete implementation
+5. **Run the backend server**
+   ```bash
+   uvicorn app.main:app --reload
+   ```
+   
+   The API will be available at `http://localhost:8000`
+   
+   API documentation: `http://localhost:8000/docs`
 
-## Quick Start Guide
+### Frontend Setup
 
-### For Hackathon (24-48 hours)
+1. **Navigate to frontend directory**
+   ```bash
+   cd ../frontend
+   ```
 
-1. **Read:** requirements.md (Requirements 1-9 only)
-2. **Review:** design.md (Overview, Architecture, Core Components)
-3. **Implement:** tasks.md Phase 1 (Tasks 1-12)
-4. **Add:** 2-3 features from Phase 2 (Tasks 13-15 recommended)
-5. **Demo:** Use demo mode for fast, reliable presentation
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-**Recommended Features:**
-- ✅ Core MVP (Phase 1)
-- ✅ Demo Mode (Task 13)
-- ✅ Diff View (Task 14)
-- ✅ Basic Export (Task 15)
+3. **Configure API endpoint**
+   ```bash
+   cp .env.example .env.local
+   ```
+   
+   Edit `.env.local`:
+   ```env
+   VITE_API_URL=http://localhost:8000
+   ```
 
-### For Extended Development (1-2 weeks)
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   
+   The app will be available at `http://localhost:5173`
 
-1. Complete Phase 1 (Core MVP)
-2. Complete Phase 2 (Demo Enhancement)
-3. Add 3-5 features from Phase 3 based on user feedback
-4. Consider Phase 4 features as polish
+## 📖 Usage
 
-### For Production Release
+### Basic Analysis
 
-1. Complete all 4 phases
-2. Implement all property tests
-3. Add monitoring and analytics
-4. Add user authentication
-5. Deploy with proper infrastructure
+1. Open the web application
+2. Paste your Python code into the editor
+3. Click "Analyze Code"
+4. View the four analysis sections:
+   - Summary
+   - Line-by-Line Explanations
+   - Issues Detected
+   - Improved Code
 
-## Feature Flags
+### Using Sample Code
 
-Control which features are enabled using environment variables:
+Click the "Load Sample" dropdown to try pre-loaded examples:
+- Buggy code with errors
+- Inefficient code with performance issues
+- Clean code following best practices
+
+### API Usage
 
 ```bash
-# Core (always on)
-ENABLE_DEMO_MODE=true
-
-# Phase 2
-ENABLE_DIFF_VIEW=true
-ENABLE_EXPORT=true
-ENABLE_LEARNING_AIDS=true
-
-# Phase 3
-ENABLE_CUSTOMIZATION=false
-ENABLE_PEP8_CHECK=false
-ENABLE_DEBUG_GUIDANCE=false
-
-# Phase 4
-ENABLE_PERFORMANCE_ANALYSIS=false
-ENABLE_CONFIDENCE=false
-ENABLE_SHARE_LINKS=false
+curl -X POST "http://localhost:8000/api/analyze" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "code": "def greet(name):\n    print(\"Hello \" + name)",
+    "options": {
+      "include_summary": true,
+      "include_explanation": true,
+      "include_issues": true,
+      "include_improved": true
+    }
+  }'
 ```
 
-## Technology Stack
+## 🏗️ Project Structure
 
-### Frontend
-- React with TypeScript
-- Monaco Editor (code editing)
-- Tailwind CSS (styling)
-- Axios (HTTP client)
+```
+code-explainer-fixer/
+├── backend/                    # FastAPI backend
+│   ├── app/
+│   │   ├── main.py            # FastAPI application
+│   │   ├── config.py          # Configuration & feature flags
+│   │   ├── models/            # Pydantic data models
+│   │   │   └── schemas.py
+│   │   ├── services/          # Business logic
+│   │   │   ├── validator.py
+│   │   │   ├── ai_service.py
+│   │   │   └── analyzer.py
+│   │   ├── api/               # API routes
+│   │   │   └── routes.py
+│   │   └── data/              # Sample code
+│   │       └── samples.py
+│   ├── tests/                 # Test files
+│   ├── requirements.txt       # Python dependencies
+│   └── .env.example          # Environment template
+│
+├── frontend/                  # React frontend
+│   ├── src/
+│   │   ├── components/       # React components
+│   │   ├── services/         # API client
+│   │   ├── App.tsx           # Main application
+│   │   └── main.tsx          # Entry point
+│   ├── package.json          # Node dependencies
+│   └── .env.example         # Environment template
+│
+└── README.md                 # This file
+```
 
-### Backend
-- FastAPI (Python 3.10+)
-- OpenAI API (GPT-4 or GPT-3.5-turbo)
-- Pydantic (validation)
-- Pytest + Hypothesis (testing)
+## 🧪 Testing
 
-### Optional
-- pycodestyle/flake8 (PEP 8 checking)
-- reportlab/weasyprint (PDF export)
-- Redis (caching, shareable links)
-- PostgreSQL/MongoDB (storage)
+### Backend Tests
 
-## Success Criteria
+```bash
+cd backend
 
-### Minimum Viable Demo
-- ✅ Code input and validation working
-- ✅ All four analysis outputs displayed
-- ✅ Sample code loading functional
-- ✅ Error handling graceful
-- ✅ UI clean and professional
-- ✅ Demo completes in < 5 minutes
+# Run all tests
+pytest
 
-### Excellent Demo
-- ✅ All MVP criteria met
-- ✅ Demo mode with fast results
-- ✅ Visual diff comparison
-- ✅ Export functionality
-- ✅ Learning aids displayed
-- ✅ Accessible and polished UI
+# Run with coverage
+pytest --cov=app tests/
 
-## Testing Strategy
+# Run specific test file
+pytest tests/test_models.py -v
 
-### Unit Tests
-Test individual functions in isolation
-- Input validation
-- Error handling
-- Response formatting
+# Run property-based tests
+pytest tests/test_validation_properties.py -v
+```
 
-### Property-Based Tests
-Use Hypothesis with 100+ iterations
-- 22 properties specified in design.md
-- Universal behaviors across all inputs
+### Frontend Tests
 
-### Integration Tests
-Test full workflows
-- API endpoints
-- Frontend-backend integration
-- AI service integration
+```bash
+cd frontend
 
-### Manual Tests
-- UI/UX testing
-- Demo scenarios
-- Accessibility testing
+# Run tests
+npm test
 
-## Documentation Files
+# Run with coverage
+npm run test:coverage
+```
 
-- **requirements.md** - What to build (21 requirements)
-- **design.md** - How to build it (architecture, components, properties)
-- **tasks.md** - Implementation plan (30 tasks, 4 phases)
-- **CHANGES.md** - Summary of design updates
-- **TASK_UPDATES.md** - Summary of task list updates
-- **README.md** - This file (overview and quick start)
+## ⚙️ Configuration
 
-## Key Principles
+### Feature Flags
 
-1. **Demo-Ready:** Prioritize features that impress judges
-2. **Incremental:** Build in phases, each phase adds value
-3. **Modular:** Optional features don't break core functionality
-4. **Testable:** Property tests ensure correctness
-5. **Learning-Focused:** Target audience is students and beginners
-6. **Simple:** Avoid over-engineering, keep it hackathon-appropriate
+Enable/disable optional features via environment variables in `backend/.env`:
 
-## Getting Started
+```env
+# Optional Features (set to "true" or "false")
+ENABLE_DIFF_VIEW=false              # Visual diff comparison
+ENABLE_LEARNING_AIDS=false          # Concept highlighting & tips
+ENABLE_CUSTOMIZATION=false          # Explanation depth control
+ENABLE_EXPORT=false                 # Export to PDF/Markdown/HTML
+ENABLE_CONFIDENCE=false             # Confidence indicators
+ENABLE_PEP8_CHECK=false            # PEP 8 style checking
+ENABLE_PERFORMANCE_ANALYSIS=false   # Performance optimization suggestions
+ENABLE_DEMO_MODE=true              # Fast cached results for demos
+```
 
-1. Clone or create project repository
-2. Read requirements.md (at least Requirements 1-9)
-3. Review design.md (Overview and Architecture sections)
-4. Start with tasks.md Task 1 (Project Setup)
-5. Complete Phase 1 before adding optional features
-6. Use checkpoints to validate progress
+### Analysis Constraints
 
-## Questions?
+- **Maximum code length**: 500 lines
+- **Analysis timeout**: 30 seconds
+- **Supported language**: Python only
 
-- Check design.md for architectural decisions
-- Check requirements.md for feature specifications
-- Check tasks.md for implementation guidance
-- Review CHANGES.md for what's new
-- Review TASK_UPDATES.md for task organization
+## 🎯 Demo Mode
 
-## License
+Perfect for presentations and hackathons:
 
-This specification is provided as-is for educational and hackathon purposes.
+1. Set `ENABLE_DEMO_MODE=true` in `.env`
+2. Use pre-loaded sample code for instant results
+3. Cached responses ensure fast, consistent output
+4. Enhanced visual emphasis for screen sharing
 
----
+## 🤝 Contributing
 
-**Last Updated:** January 2026
-**Version:** 2.0 (with optional features)
-**Status:** Ready for implementation
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+### Development Guidelines
+
+- Follow PEP 8 for Python code
+- Use TypeScript for frontend code
+- Write tests for new features
+- Update documentation as needed
+
+## 📝 API Documentation
+
+### Endpoints
+
+#### `POST /api/analyze`
+
+Analyze Python code and return comprehensive results.
+
+**Request Body:**
+```json
+{
+  "code": "string (required)",
+  "options": {
+    "include_summary": true,
+    "include_explanation": true,
+    "include_issues": true,
+    "include_improved": true,
+    "explanation_depth": "standard",
+    "demo_mode": false
+  }
+}
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "data": {
+    "summary": "High-level summary...",
+    "line_by_line": [...],
+    "issues": [...],
+    "improved_code": "...",
+    "original_code": "..."
+  },
+  "error": null
+}
+```
+
+#### `GET /api/samples`
+
+Get pre-loaded sample code snippets.
+
+**Response:**
+```json
+{
+  "samples": [
+    {
+      "id": "sample1",
+      "title": "Hello World",
+      "description": "A simple program",
+      "code": "print('Hello')",
+      "category": "clean"
+    }
+  ]
+}
+```
+
+Full API documentation available at `http://localhost:8000/docs` when running the backend.
+
+## 🛠️ Tech St
