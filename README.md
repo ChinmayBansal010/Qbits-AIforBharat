@@ -328,4 +328,18 @@ Full API documentation available at `http://localhost:8000/docs` when running th
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the 
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- OpenAI for providing the GPT API
+- FastAPI for the excellent web framework
+- The Python and React communities
+
+## 📧 Contact
+
+For questions or feedback, please open an issue on GitHub.
+
+---
+
+**Built with ❤️ for students and developers learning Python**
