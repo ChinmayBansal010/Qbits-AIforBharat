@@ -309,4 +309,23 @@ Get pre-loaded sample code snippets.
 
 Full API documentation available at `http://localhost:8000/docs` when running the backend.
 
-## 🛠️ Tech St
+## 🛠️ Tech Stack
+
+### Backend
+- **FastAPI** - Modern Python web framework
+- **OpenAI API** - GPT-3.5/GPT-4 for code analysis
+- **Pydantic** - Data validation and settings management
+- **Pytest** - Testing framework
+- **Hypothesis** - Property-based testing
+
+### Frontend
+- **React** - UI library
+- **TypeScript** - Type-safe JavaScript
+- **Vite** - Build tool and dev server
+- **Monaco Editor** - Code editor with syntax highlighting
+- **Tailwind CSS** - Utility-first CSS framework
+- **Axios** - HTTP client
+
+## 📄 License
+
+This project is licensed under the MIT License - see the 
